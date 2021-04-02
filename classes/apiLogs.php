@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class ApiLogs.
+ */
 class ApiLogs{
 
     // Connection instance

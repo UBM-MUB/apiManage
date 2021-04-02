@@ -7,25 +7,26 @@ $config = new Configuration($connection);
 //value is considered in seconds
 $duration = $config->duration();
 $requestLimits = $config->requestLimit();
+//Submitting the configuration change
+    if(isset($_POST['configSubmit'])){
+        $limit = (int)$_POST['limit'] > 0  ? $_POST['limit'] : $requestLimits;
+        $duration = (int)$_POST['duration'] > 0 ? $_POST['duration'] : $duration;
+        $config->resetConfigurations($duration,$limit);
+        header("Location: auth.php");die();
 
-        if(isset($_POST['configSubmit'])){
-            $limit = (int)$_POST['limit'] > 0  ? $_POST['limit'] : $requestLimits;
-            $duration = (int)$_POST['duration'] > 0 ? $_POST['duration'] : $duration;
-            $config->resetConfigurations($duration,$limit);
-            header("Location: auth.php");die();
-
-        }
-        else if(isset($_GET['action']) && $_GET['action']=='logout'){
-            session_start();
-            // Destroying session
-            session_destroy();
-            header("Location: index.php");die();
+    }
+    //Logout action
+    else if(isset($_GET['action']) && $_GET['action']=='logout'){
+        session_start();
+        // Destroying session
+        session_destroy();
+        header("Location: index.php");die();
 
 
-        }else{
-            header("Location: auth.php");die();
+    }else{
+        header("Location: auth.php");die();
 
-        }
+    }
        
 
 ?>

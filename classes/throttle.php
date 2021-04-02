@@ -2,9 +2,19 @@
 include_once './classes/dbclass.php';
 include_once './classes/apiLogs.php';
 include_once './classes/configuration.php';
-
+/**
+ * Class Throttle.
+ */
 class Throttle{
-
+    /**
+     * Is access granted to this reequest?
+     *
+     * @param string $request Requested api 
+     *
+     * @return bool Whether access is granted
+     *
+     * @throws Exception
+     */
     public static function trafficControll($request){
         $dbclass = new DBClass();
         $connection = $dbclass->getConnection();

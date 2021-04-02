@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class Places.
+ */
 class Places{
 
     // Connection instance

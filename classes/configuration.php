@@ -1,4 +1,7 @@
 <?php
+/**
+ * Class Configuration.
+ */
 class Configuration{
 
     // Connection instance
